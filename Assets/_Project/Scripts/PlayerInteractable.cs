@@ -46,8 +46,11 @@ public class PlayerInteractable : MonoBehaviour
     {
         assetsInScene = new AssetsInScene();
         UpdateAssetsPosition();
-        LoadAssetsFromFile();
-        ApplyAssets();
+        if (System.IO.File.Exists(saveGamePath + "/" + fileName + ".json"))
+        {
+            LoadAssetsFromFile();
+            ApplyAssets();
+        }
     }
 
     private void ApplyAssets()
@@ -55,6 +58,12 @@ public class PlayerInteractable : MonoBehaviour
         foreach (AssetInScene asset in assetsInScene.listOfAssets)
         {
             GameObject go = GameObject.Find(asset.name);
+            if (go == null)
+            {
+                string name = asset.name.Split('_')[0];
+                go = Instantiate(Resources.Load("Interactable/" + name)) as GameObject;
+                go.name = asset.name;
+            }
             go.transform.localScale = asset.scale;
             go.transform.position = asset.position;
             go.transform.rotation = asset.rotation;
@@ -67,7 +76,7 @@ public class PlayerInteractable : MonoBehaviour
         JsonUtility.FromJsonOverwrite(jsonString, assetsInScene);
     }
 
-    private void UpdateAssetsPosition()
+    public void UpdateAssetsPosition()
     {
         foreach (GameObject child in GameObject.FindGameObjectsWithTag("Asset"))
         {
@@ -79,7 +88,7 @@ public class PlayerInteractable : MonoBehaviour
                     asset.position = child.transform.position;
                     asset.rotation = child.transform.rotation;
                     json = JsonUtility.ToJson(assetsInScene);
-                    return;
+                    break;
                 }
             } 
             AssetInScene go = new AssetInScene(child.gameObject.name, child.transform.localScale, child.transform.position, child.transform.rotation);

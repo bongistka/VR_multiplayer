@@ -12,7 +12,7 @@ public class NetworkController : MonoBehaviourPunCallbacks
     {
         if (mockHMD)
         {
-            UnityEngine.XR.XRSettings.LoadDeviceByName("Mock HMD");
+            UnityEngine.XR.XRSettings.LoadDeviceByName("None");
         }
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("connected");

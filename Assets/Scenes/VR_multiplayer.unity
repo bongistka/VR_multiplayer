@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInteractable
       objectReference: {fileID: 0}
+    - target: {fileID: 833073289900496693, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerInteractable
+      objectReference: {fileID: 0}
     - target: {fileID: 833073289900496691, guid: 63a3beede8e843c4b9de64c0705dd326,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,6 +198,21 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8870793010684320515, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4368714321565217719, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: m_Name
+      value: MovableRectangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 833073289361112371, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: m_Name
+      value: MovableBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611571058209486930, guid: 63a3beede8e843c4b9de64c0705dd326,
         type: 3}
       propertyPath: viewIdField
       value: 1

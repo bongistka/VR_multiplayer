@@ -35,7 +35,7 @@ public class PlayerInteractable : MonoBehaviour
         }
     }
 
-    AssetsInScene assetsInScene;
+    public AssetsInScene assetsInScene;
 
     //public List<AssetInScene> assetsInScene = new List<AssetInScene>();
     public string saveGamePath;
@@ -92,6 +92,7 @@ public class PlayerInteractable : MonoBehaviour
     {
         UpdateAssetsPosition();
         SaveAssetsInScene();
+        Debug.Log("Saving assets and quitting");
     }
 
     private void SaveAssetsInScene()

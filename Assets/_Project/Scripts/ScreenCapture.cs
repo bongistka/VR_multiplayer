@@ -6,25 +6,26 @@ using UnityEngine;
 public class ScreenCapture : MonoBehaviour
 {
     public string filename;
+    public Shader unlitShader;
 
     void CamCapture()
     {
-        Camera Cam = GetComponent<Camera>();
-
+        Camera cam = GetComponent<Camera>();
+        cam.SetReplacementShader(unlitShader, "");
         RenderTexture currentRT = RenderTexture.active;
-        RenderTexture.active = Cam.targetTexture;
+        RenderTexture.active = cam.targetTexture;
 
-        Cam.Render();
+        cam.Render();
 
-        Texture2D Image = new Texture2D(Cam.targetTexture.width, Cam.targetTexture.height);
-        Image.ReadPixels(new Rect(0, 0, Cam.targetTexture.width, Cam.targetTexture.height), 0, 0);
-        Image.Apply();
+        Texture2D image = new Texture2D(cam.targetTexture.width, cam.targetTexture.height);
+        image.ReadPixels(new Rect(0, 0, cam.targetTexture.width, cam.targetTexture.height), 0, 0);
+        image.Apply();
         RenderTexture.active = currentRT;
 
-        var Bytes = Image.EncodeToPNG();
-        Destroy(Image);
+        var bytes = image.EncodeToPNG();
+        Destroy(image);
 
-        File.WriteAllBytes("Floorplans/" + filename + ".png", Bytes);
+        File.WriteAllBytes("Floorplans/" + filename + ".png", bytes);
     }
 
     private void OnApplicationQuit()

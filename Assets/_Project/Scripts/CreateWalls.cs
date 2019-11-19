@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,10 +71,10 @@ public class CreateWalls : MonoBehaviour
         Vector3 rightAnglePosition;
         if (Mathf.Abs(startPoint.transform.position.x - GetPointerPosition().x) < Mathf.Abs(startPoint.transform.position.z - GetPointerPosition().z))
         {
-            rightAnglePosition = new Vector3(startPoint.transform.position.x, GetPointerPosition().y, GetPointerPosition().z);
+            rightAnglePosition = new Vector3(startPoint.transform.position.x, 0, GetPointerPosition().z);
         } else
         {
-            rightAnglePosition = new Vector3(GetPointerPosition().x, GetPointerPosition().y, startPoint.transform.position.z);
+            rightAnglePosition = new Vector3(GetPointerPosition().x, 0, startPoint.transform.position.z);
         }
         
         return rightAnglePosition;
@@ -100,7 +101,7 @@ public class CreateWalls : MonoBehaviour
     {
         creating = true;
         startPoint.transform.position = GetPointerPosition();
-        wall = Instantiate(wallPrefab, startPoint.transform.position, Quaternion.identity) as GameObject;
+        wall = PhotonNetwork.Instantiate("Interactable/"+wallPrefab.name, startPoint.transform.position, Quaternion.identity) as GameObject;
         wall.name = wallPrefab.name + "_" + AddInteractable.GetNextObjectID(pi, wallPrefab);
         PlayerInteractable.AssetInScene go = new PlayerInteractable.AssetInScene(wall.gameObject.name, wall.transform.localScale, wall.transform.position, wall.transform.rotation);
         pi.assetsInScene.listOfAssets.Add(go);

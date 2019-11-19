@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class AddInteractable : MonoBehaviour
 
     public void InstantiatePrefab()
     {
-        GameObject objectClone = GameObject.Instantiate(prefab, new Vector3(0, 2, 0), Quaternion.identity);
+        GameObject objectClone = PhotonNetwork.Instantiate("Interactable/" + prefab.name, new Vector3(0, 2, 0), Quaternion.identity);
         objectClone.name = prefab.gameObject.name + "_" + GetNextObjectID(pi, prefab);
         PlayerInteractable.AssetInScene go = new PlayerInteractable.AssetInScene(objectClone.gameObject.name, objectClone.transform.localScale, objectClone.transform.position, objectClone.transform.rotation);
         pi.assetsInScene.listOfAssets.Add(go);

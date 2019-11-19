@@ -14,6 +14,7 @@ public class CreateWalls : MonoBehaviour
     public GameObject startPoint;
     public GameObject endPoint;
     public GameObject wallPrefab;
+    UIElement button;
 
     GameObject wall;
 
@@ -25,14 +26,20 @@ public class CreateWalls : MonoBehaviour
     void Start()
     {
         pi = GameObject.FindGameObjectWithTag("PlayerInteractable").GetComponent<PlayerInteractable>();
+        button = this.gameObject.GetComponent<UIElement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(laserInitialized)
-            if (laserPointer.isActive)
+        if (laserInitialized && button.currentHand == null)
+            if (laserPointer.enabled)
                 GetInput();
+        if (laserInitialized && SteamVR_Actions._default.GrabGrip.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            laserPointer.enabled = false;
+            laserPointer.pointer.transform.localScale = Vector3.zero;
+        }
     }
 
     private void GetInput()
@@ -54,8 +61,22 @@ public class CreateWalls : MonoBehaviour
 
     private void Adjust()
     {
-        endPoint.transform.position = GetPointerPosition();
+        endPoint.transform.position = GetRightAnglePosition();
         AdjustWall();
+    }
+
+    private Vector3 GetRightAnglePosition()
+    {
+        Vector3 rightAnglePosition;
+        if (Mathf.Abs(startPoint.transform.position.x - GetPointerPosition().x) < Mathf.Abs(startPoint.transform.position.z - GetPointerPosition().z))
+        {
+            rightAnglePosition = new Vector3(startPoint.transform.position.x, GetPointerPosition().y, GetPointerPosition().z);
+        } else
+        {
+            rightAnglePosition = new Vector3(GetPointerPosition().x, GetPointerPosition().y, startPoint.transform.position.z);
+        }
+        
+        return rightAnglePosition;
     }
 
     private void AdjustWall()
@@ -72,7 +93,7 @@ public class CreateWalls : MonoBehaviour
     {
         creating = false;
         if (GetPointerPosition() != Vector3.zero)
-            endPoint.transform.position = GetPointerPosition();
+            endPoint.transform.position = GetRightAnglePosition();
     }
 
     private void SetStart()

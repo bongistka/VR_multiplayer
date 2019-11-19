@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 1081629022787279973}
   - component: {fileID: 3062185085072772675}
   - component: {fileID: 4820512728131224772}
-  - component: {fileID: 3739973840661809369}
   - component: {fileID: 603869863570044}
   - component: {fileID: 5553490792733627480}
   - component: {fileID: 908483728708648322}
   - component: {fileID: 8682042651292689579}
+  - component: {fileID: 1978358652011619561}
   m_Layer: 2
   m_Name: Sphere
   m_TagString: Asset
@@ -208,19 +208,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!65 &3739973840661809369
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657619703836087225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &603869863570044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +274,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2172ce1926bf904b91a6f5cbc287c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1978358652011619561
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657619703836087225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

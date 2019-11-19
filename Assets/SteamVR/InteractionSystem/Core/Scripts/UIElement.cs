@@ -17,7 +17,7 @@ namespace Valve.VR.InteractionSystem
 	{
 		public CustomEvents.UnityEventHand onHandClick;
 
-        protected Hand currentHand;
+        public Hand currentHand;
 
 		//-------------------------------------------------
 		protected virtual void Awake()

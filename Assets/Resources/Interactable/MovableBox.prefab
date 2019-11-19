@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 1869308148748173698}
   - component: {fileID: 3941184258961714345}
   - component: {fileID: 30793894599738353}
-  m_Layer: 0
-  m_Name: MovableBox01
+  m_Layer: 2
+  m_Name: MovableBox
   m_TagString: Asset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

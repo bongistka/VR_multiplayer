@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 6316437146673412486}
   - component: {fileID: 485213155581642226}
   - component: {fileID: 2382023640119159495}
-  m_Layer: 0
-  m_Name: MovableRectangle01
+  m_Layer: 2
+  m_Name: MovableRectangle
   m_TagString: Asset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -127,6 +127,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833073289900496693, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerInteractable
+      objectReference: {fileID: 0}
+    - target: {fileID: 833073289900496693, guid: 63a3beede8e843c4b9de64c0705dd326,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerInteractable
+      objectReference: {fileID: 0}
     - target: {fileID: 2027436582146927543, guid: 63a3beede8e843c4b9de64c0705dd326,
         type: 3}
       propertyPath: m_Sprite
@@ -142,16 +152,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 833073289900496693, guid: 63a3beede8e843c4b9de64c0705dd326,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerInteractable
-      objectReference: {fileID: 0}
-    - target: {fileID: 833073289900496693, guid: 63a3beede8e843c4b9de64c0705dd326,
-        type: 3}
-      propertyPath: m_TagString
-      value: PlayerInteractable
       objectReference: {fileID: 0}
     - target: {fileID: 4414121540194820771, guid: 63a3beede8e843c4b9de64c0705dd326,
         type: 3}
@@ -1355,7 +1355,7 @@ Transform:
   m_GameObject: {fileID: 1806084976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0018998, z: 0}
-  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
   m_Children: []
   m_Father: {fileID: 2000399405}
   m_RootOrder: 1

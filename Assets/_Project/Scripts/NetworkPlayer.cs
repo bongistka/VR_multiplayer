@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 // For use with Photon and SteamVR
 public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
@@ -41,6 +42,7 @@ public class NetworkPlayer : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             Debug.Log("Player is mine");
+            Debug.Log("Current scene: " + SceneManager.GetActiveScene().name);
 
             playerGlobal = GameObject.Find("Player").transform;
             playerLocal = GameObject.Find("FollowHead").transform;

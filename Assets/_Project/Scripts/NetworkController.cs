@@ -8,14 +8,9 @@ public class NetworkController : MonoBehaviourPunCallbacks
     string _room = "VR_starter";
     public bool mockHMD;
 
-    void Start()
+    void Awake()
     {
-        if (mockHMD)
-        {
-            UnityEngine.XR.XRSettings.LoadDeviceByName("None");
-        }
-        PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("connected");
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     public override void OnConnectedToMaster()
@@ -28,6 +23,23 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.Instantiate("NetworkPlayer", Vector3.zero, Quaternion.identity, 0);
+        PhotonNetwork.LoadLevel("VR_multiplayer");
+        //PhotonNetwork.Instantiate("NetworkPlayer", Vector3.zero, Quaternion.identity, 0);
+    }
+
+    public void ConnectToPhotonServer()
+    {
+        if (!PhotonNetwork.IsConnected)
+        {
+            // Connects us to the Photon server using settings in 
+            // Photon /PhotonUnityNetworking/Resources/PhotonServerSettings.
+            if (mockHMD)
+            {
+                UnityEngine.XR.XRSettings.LoadDeviceByName("None");
+            }
+            PhotonNetwork.ConnectUsingSettings();
+            Debug.Log("connected");
+        }
+
     }
 }

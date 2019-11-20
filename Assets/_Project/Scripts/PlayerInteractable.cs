@@ -57,17 +57,23 @@ public class PlayerInteractable : MonoBehaviour
     {
         foreach (AssetInScene asset in assetsInScene.listOfAssets)
         {
-            GameObject go = GameObject.Find(asset.name);
-            if (go == null)
-            {
-                string name = asset.name.Split('_')[0];
-                go = Instantiate(Resources.Load("Interactable/" + name)) as GameObject;
-                go.name = asset.name;
-            }
-            go.transform.localScale = asset.scale;
-            go.transform.position = asset.position;
-            go.transform.rotation = asset.rotation;
+            AddOrUpdateAsset(asset);
         }
+    }
+
+    public void AddOrUpdateAsset(AssetInScene asset)
+    {
+        GameObject go = GameObject.Find(asset.name);
+        if (go == null)
+        {
+            string name = asset.name.Split('_')[0];
+            Debug.Log("Instancing object " + name);
+            go = Instantiate(Resources.Load("Interactable/" + name)) as GameObject;
+            go.name = asset.name;
+        }
+        go.transform.localScale = asset.scale;
+        go.transform.position = asset.position;
+        go.transform.rotation = asset.rotation;
     }
 
     private void LoadAssetsFromFile()

@@ -19,7 +19,7 @@ public class AddInteractable : MonoBehaviour
         GameObject objectClone = PhotonNetwork.Instantiate("Interactable/" + prefab.name, new Vector3(0, 2, 0), Quaternion.identity);
         objectClone.name = prefab.gameObject.name + "_" + GetNextObjectID(pi, prefab);
         PlayerInteractable.AssetInScene go = new PlayerInteractable.AssetInScene(objectClone.gameObject.name, objectClone.transform.localScale, objectClone.transform.position, objectClone.transform.rotation);
-        pi.assetsInScene.listOfAssets.Add(go);
+        pi.AddOrUpdateAsset(go);
         pi.UpdateAssetsPosition();
     }
 
